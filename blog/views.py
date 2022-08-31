@@ -1,8 +1,10 @@
 from multiprocessing import context
 from django.shortcuts import render
+from .models import Post
 #from django.http import HttpResponse
 
 posts = [
+	#dummy posts
 	{
 		'author' : 'Atin Arora',
 		'title' : 'Post 1',
@@ -10,18 +12,18 @@ posts = [
 		'date_posted' : '26/8/2022'
 	},
 	{
-		'author' : 'Nadu Man',
+		'author' : 'NBA Leader',
 		'title' : 'Post 69',
-		'content' : 'I love sutta',
+		'content' : 'I play NB',
 		'date_posted' : '27/8/2022'
 	},
 ]	
-	
+
 
 def home(request):
 	context = {
 		'title' : 'Home',
-		'posts' : posts
+		'posts' : Post.objects.all(),
 	}
 	return render(request, 'blog/home.html', context)
 
